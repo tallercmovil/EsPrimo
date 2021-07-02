@@ -21,18 +21,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun clickBoton(view: View) {
-        if(binding.etNumero.text.toString() != ""){
-            val numero = Integer.parseInt(binding.etNumero.text.toString())
 
-            if(esPrimo(numero)){
-                binding.tvResultado.text = "El número $numero sí es primo"
-            }else{
-                binding.tvResultado.text = "El número $numero no es primo"
+        with(binding) {
+            if (etNumero.text.toString() != "") {
+                val numero = Integer.parseInt(etNumero.text.toString())
+
+                if (esPrimo(numero)) {
+                    tvResultado.text = resources.getString(R.string.si_primo, numero, "!")
+                } else {
+                    tvResultado.text = getString(R.string.no_primo, numero)
+                }
+
+            } else {
+                Toast.makeText(this@MainActivity, getString(R.string.ingresa_valor), Toast.LENGTH_SHORT).show()
+                etNumero.error = getString(R.string.valor_requerido)
             }
-
-        }else{
-            Toast.makeText(this, "Por favor ingresa un valor", Toast.LENGTH_SHORT).show()
-            binding.etNumero.error = "Se requiere un valor"
         }
     }
 
