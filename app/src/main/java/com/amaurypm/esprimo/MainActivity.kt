@@ -29,22 +29,23 @@ class MainActivity : AppCompatActivity() {
 
                 val numero = binding.etNumero.text.toString().toInt()
                 if(esPrimo(numero)){
-                    binding.tvResultado.text = "El número $numero sí es primo"
+                    binding.tvResultado.text = getString(R.string.si_primo, numero, "!")
                 }else{
-                    binding.tvResultado.text = "El número $numero no es primo"
+                    binding.tvResultado.text = getString(R.string.no_primo, numero)
                 }
 
 
                 //Verificar si el número es primo o no
             }else{
-                Toast.makeText(this, "Por favor ingresa un número", Toast.LENGTH_SHORT).show()
-                binding.etNumero.error = "Es requerido"
+                binding.tvResultado.text = ""
+                Toast.makeText(this, resources.getString(R.string.ingresa_valor), Toast.LENGTH_SHORT).show()
+                binding.etNumero.error = getString(R.string.valor_requerido)
                 binding.etNumero.requestFocus()
             }
         }
     }
 
-    fun esPrimo(numero: Int): Boolean{
+    private fun esPrimo(numero: Int): Boolean{
         if(numero<=1) return false
 
         for(i in 2 until numero){
