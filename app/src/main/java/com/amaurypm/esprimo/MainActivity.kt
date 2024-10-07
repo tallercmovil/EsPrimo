@@ -1,6 +1,8 @@
 package com.amaurypm.esprimo
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +24,22 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
+        binding.etNumero.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                binding.btnVerificar.isEnabled = validateFields()
+            }
+
+        })
 
         binding.btnVerificar.setOnClickListener {
             //click al botón
@@ -59,4 +77,10 @@ class MainActivity : AppCompatActivity() {
 
         return true
     }
+
+    private fun validateFields(): Boolean{
+        return binding.etNumero.text.toString().isNotEmpty()
+    }
+
+
 }
