@@ -1,9 +1,6 @@
 package com.amaurypm.esprimo
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -53,8 +50,7 @@ class MainActivity : AppCompatActivity() {
         })*/
 
         binding.etNumber.addTextChangedListener {
-            if(binding.etNumber.text.isNotEmpty()) binding.btnCheck.isEnabled = true
-            else binding.btnCheck.isEnabled = false
+            binding.btnCheck.isEnabled = binding.etNumber.text.isNotEmpty()
         }
 
         binding.btnCheck.setOnClickListener {
@@ -64,17 +60,17 @@ class MainActivity : AppCompatActivity() {
 
                 //Verificamos si el número es primo o no
                 if(esPrimo(number)){
-                    binding.tvResult.text = "El número $number sí es primo"
+                    binding.tvResult.text = getString(R.string.si_primo, number, "!")
                 }else{
-                    binding.tvResult.text = "El número $number no es primo"
+                    binding.tvResult.text = getString(R.string.no_primo, number)
                 }
             }else{
                 Toast.makeText(
                     this,
-                    "Por favor ingresa un número",
+                    getString(R.string.ingresa_valor),
                     Toast.LENGTH_SHORT)
                     .show()
-                binding.etNumber.error = "Se requiere un número"
+                binding.etNumber.error = getString(R.string.valor_requerido)
                 binding.etNumber.requestFocus()
             }
 
