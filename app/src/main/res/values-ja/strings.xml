@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">素数ですか</string>
+    <string name="es_primo">素数ですか？</string>
+    <string name="verificar">確認</string>
+    <string name="valor_requerido">数値が必要です</string>
+    <string name="ingresa_valor">数値を入力してください</string>
+    <string name="si_primo">数値 %1$d は素数です%2$s</string>
+    <string name="no_primo">数値 %d は素数ではありません！</string>
+    <string name="hint">数値</string>
+</resources>
